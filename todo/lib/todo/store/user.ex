@@ -10,7 +10,7 @@ defmodule Todo.Store.User do
     field :username, :string
     field :password, :string
 
-    timestamps()
+
   end
 
   @doc false

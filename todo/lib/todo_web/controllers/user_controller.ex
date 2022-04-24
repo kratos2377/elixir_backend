@@ -12,9 +12,11 @@ defmodule TodoWeb.UserController do
     |> send_resp(201 , "something returned")
    end
 
-def allUsers(conn) do
+def allUsers(conn , params) do
   users = Repo.all(User)
-  json(conn , users)
+  conn
+  |> put_resp_content_type("application/json")
+  |> send_resp(201 , users)
 end
 
 end

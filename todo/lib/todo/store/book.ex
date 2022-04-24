@@ -9,7 +9,7 @@ defmodule Todo.Store.Book do
     field :price, :float
     field :title, :string
 
-    timestamps()
+
   end
 
   @doc false
