@@ -3,10 +3,14 @@ defmodule TodoWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
   end
 
-  scope "/api", TodoWeb do
-    pipe_through :api
+  scope "/", TodoWeb do
+    get "/allUsers", UserController, :allUsers
+    get "/" , UserController, :index
   end
 
   # Enables LiveDashboard only for development

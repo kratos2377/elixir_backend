@@ -4,7 +4,7 @@ defmodule Todo.Store.User do
 
 
 
-  @primary_key {:user_id , :binary_id , autogenerate: true}
+  @primary_key {:id , :binary_id , autogenerate: true}
   schema "users" do
     field :name, :string
     field :username, :string
