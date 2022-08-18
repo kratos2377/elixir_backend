@@ -7,6 +7,8 @@ defmodule AuthWeb.Router do
 
   scope "/api", AuthWeb do
     pipe_through :api
+
+    get "/ping", AuthController, :ping
   end
 
   # Enables LiveDashboard only for development
