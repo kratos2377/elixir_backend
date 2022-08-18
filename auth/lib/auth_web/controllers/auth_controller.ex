@@ -7,7 +7,11 @@ defmodule AuthWeb.AuthController do
   end
 
   def register(conn , params) do
-    params |> Accounts.create_user()
-    conn |> render("ack.json" , %{success: true , message: "Registration Successful"})
+    case Accounts.create_user(params) do
+      {:ok , _user} ->  conn |> render("ack.json" , %{success: true , message: "Registration Successful"})
+      {:error , %Ecto.Changeset{} = changeset} -> conn |> render("error.json" , %{errors: Utils.format_changeset_errors(changeset)})
+
+      _ -> conn |>  render("error.json" , %{error: Utils.internal_server_error()})
+    end
   end
 end
