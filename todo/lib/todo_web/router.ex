@@ -13,6 +13,10 @@ defmodule TodoWeb.Router do
     get "/" , UserController, :index
   end
 
+  scope "/test", TodoWeb do
+    get "/allUsers" , UserController, :index
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
