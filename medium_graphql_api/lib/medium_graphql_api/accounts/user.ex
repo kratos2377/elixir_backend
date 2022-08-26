@@ -35,11 +35,10 @@ defmodule MediumGraphqlApi.Accounts.User do
     |> hash_password
   end
 
-  defp hash_password(%Ecto.Changeset{valid?: true , changes: %{password: password}} = changeset) do
-    change(changeset , Comeonin.Argon2.add_hash(password))
-  end
-
   defp hash_password(changeset) do
-    changeset
+    case changeset do
+       %Ecto.Changeset{valid?: true, changes: %{password: password}} -> put_change(changeset, :password_hash, Pbkdf2.hash_pwd_salt(password))
+      _ -> changeset
+    end
   end
 end
