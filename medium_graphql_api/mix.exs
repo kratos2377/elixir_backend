@@ -46,7 +46,8 @@ defmodule MediumGraphqlApi.MixProject do
       {:pbkdf2_elixir, "~> 2.0"},
       {:comeonin, "~> 5.3"},
       {:absinthe, "~> 1.7"},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:guardian, "~> 2.0"}
     ]
   end
 
